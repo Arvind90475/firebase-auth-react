@@ -14,7 +14,6 @@ const UseFetch = (url) => {
     } catch (error) {
       setisLoading(false);
       setError(error);
-      console.log(error);
     }
   }
   useEffect(() => {

@@ -20,11 +20,13 @@ function App() {
       <Router>
         <Container>
           <Navbar />
-          <Route exact path="/" component={Home} />
-          <PrivateRoute path="/dashboard" component={Dashboard} />
-          <Route path="/new" component={InputForm} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <PrivateRoute path="/dashboard" component={Dashboard} />
+            <Route path="/new" component={InputForm} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+          </Switch>
         </Container>
       </Router>
     </AuthProvider>

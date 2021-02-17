@@ -11,4 +11,4 @@ Authentication App built with React, Context-api , firebase and semantic-ui
     # CD into the folder 'firebase-auth-react'
     # run npm start - Runs the app in the development mode.\
 
-    #Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    #Navigate to  http://localhost:3000 to view it in the browser.

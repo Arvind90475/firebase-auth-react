@@ -12,7 +12,7 @@ import { useAuthContext } from '../contexts/authContext';
 
 export default function Navbar(){
     const [state, setState] = useState({ activeItem: 'home' });
-    const { currentUser, logout } = useAuthContext();
+    const { user:{currentUser}, logout } = useAuthContext();
     const history = useHistory();
     
     const handleItemClick = (e, { name }) => {

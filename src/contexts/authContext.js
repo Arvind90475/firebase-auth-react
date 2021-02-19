@@ -30,11 +30,17 @@ export const Authcontext = createContext();
 export const useAuthContext = () => useContext(Authcontext);
 
 export default function AuthProvider({ children }) {
+  const [user, setUser] = useState({
+    currentUser: null,
+  });
+  // const [user, dispatch] = useReducer(reducer, initialState);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setLoading(false);
-      // dispatch({ type: "SET_CURRENT_USER", payload: user });
       setUser({ ...user, currentUser: user });
+      // dispatch({ type: "SET_CURRENT_USER", payload: user });
+      setLoading(false);
     });
     return () => {
       unsubscribe();
@@ -44,12 +50,6 @@ export default function AuthProvider({ children }) {
   // const initialState = {
   //   currentUser: null,
   // };
-
-  const [user, setUser] = useState({
-    currentUser: null,
-  });
-  // const [user, dispatch] = useReducer(reducer, initialState);
-  const [loading, setLoading] = useState(true);
 
   const value = {
     user,

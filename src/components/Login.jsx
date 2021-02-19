@@ -22,11 +22,12 @@ function Login() {
         setIsLoading(true);
         try {
             await loginUser(email, password);
+            setIsLoading(false);
             history.push('/dashboard');
         } catch (error) {
+            setIsLoading(false);
             setError('failed to login');
         }
-        setIsLoading(false);
     }
 
     const googleSingIn = async () => {
@@ -34,11 +35,12 @@ function Login() {
         setIsLoading(true);
         try {
             await googleLogin();
+            setIsLoading(false);
             history.push('/dashboard');
         } catch (error) {
+            setIsLoading(false);
             setError('Opps ! something went wrong')
         }
-        setIsLoading(false);
     }
 
     return (

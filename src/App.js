@@ -11,7 +11,9 @@ import InputForm from "./components/InputForm";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Dashboard from "./components/Dashboard";
-import PrivateRoute from "./privateRoutes/PrivateRoute";
+
+import PrivateRoute from "./routeGuards/PrivateRoute";
+import AuthRouteGuard from "./routeGuards/authRouteGuard";
 
 function App() {
   return (
@@ -22,8 +24,8 @@ function App() {
           <Route exact path="/" component={Home} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <Route path="/new" component={InputForm} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
+          <AuthRouteGuard path="/login" component={Login} />
+          <AuthRouteGuard path="/signup" component={Signup} />
         </Container>
       </Router>
     </AuthProvider>

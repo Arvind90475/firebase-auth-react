@@ -9,7 +9,7 @@ const AuthRouteGuard = ({component: Component, ...rest}) => {
         <Route 
             {...rest}
             render={(props) =>  
-                currentUser ? <Redirect to='/' /> : <Component {...props}  />}
+                currentUser ? <Redirect to='/dashboard' /> : <Component {...props}  />}
         />
     )
 }

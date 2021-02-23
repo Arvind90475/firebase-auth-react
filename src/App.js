@@ -6,8 +6,7 @@ import "./App.css";
 import AuthProvider from "./contexts/authContext";
 
 import Navbar from "./components/navbar";
-import Home from "./components/Home";
-import InputForm from "./components/InputForm";
+import HomePage from "./pages/HomePage";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Dashboard from "./components/Dashboard";
@@ -21,9 +20,8 @@ function App() {
       <Router>
         <Container>
           <Navbar />
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={HomePage} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
-          <Route path="/new" component={InputForm} />
           <AuthRouteGuard path="/login" component={Login} />
           <AuthRouteGuard path="/signup" component={Signup} />
         </Container>

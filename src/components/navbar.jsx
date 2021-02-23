@@ -13,6 +13,7 @@ import { useAuthContext } from '../contexts/authContext';
 export default function Navbar(){
     const [state, setState] = useState({ activeItem: 'home' });
     const { user:{currentUser}, logout } = useAuthContext();
+    
     const history = useHistory();
     
     const handleItemClick = (e, { name }) => {
@@ -40,13 +41,7 @@ export default function Navbar(){
             active={activeItem === 'home'}
             onClick={handleItemClick}
           />
-          <Menu.Item
-            as={Link}
-            to= '/new'
-            name='new blog'
-            active={activeItem === 'new blog'}
-            onClick={handleItemClick}
-          />  
+          
           {!currentUser ? (
             <Menu.Menu position='right'>
             <Menu.Item
@@ -74,7 +69,7 @@ export default function Navbar(){
               <Menu.Item
                 as={Link}
                 to='/dashboard'
-                name='dashboard'
+                name={currentUser.displayName.split(' ')[0]}
                 active={activeItem === 'dashboard'}
                 onClick={handleItemClick}
               />

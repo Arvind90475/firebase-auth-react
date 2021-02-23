@@ -22,7 +22,7 @@ function Login() {
         setIsLoading(true);
         try {
             await loginUser(email, password);
-            setIsLoading(false);
+            // setIsLoading(false);
             history.push('/dashboard');
         } catch (error) {
             setIsLoading(false);
@@ -35,7 +35,6 @@ function Login() {
         setIsLoading(true);
         try {
             await googleLogin();
-            setIsLoading(false);
             history.push('/dashboard');
         } catch (error) {
             setIsLoading(false);

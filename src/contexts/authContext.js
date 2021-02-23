@@ -9,6 +9,7 @@ import React, {
 import { auth, provider } from "../firebase";
 
 import { reducer } from "../reducers/auth.reducer";
+import { actionTypes } from "../reducers/auth.reducer";
 
 const registerUser = (email, password) => {
   return auth.createUserWithEmailAndPassword(email, password);
@@ -33,12 +34,13 @@ export default function AuthProvider({ children }) {
   const initialState = {
     currentUser: null,
   };
+
   const [user, dispatch] = useReducer(reducer, initialState);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      dispatch({ type: "SET_CURRENT_USER", payload: user });
+      dispatch({ type: actionTypes.setCurrentUser, payload: user });
       setLoading(false);
     });
     return () => {
@@ -52,6 +54,7 @@ export default function AuthProvider({ children }) {
     loginUser,
     googleLogin,
     logout,
+    dispatch,
   };
   return (
     <Authcontext.Provider value={value}>
